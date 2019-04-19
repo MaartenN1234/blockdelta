@@ -18,6 +18,6 @@ public interface RowsourceGenerator {
 	default public Set<String> getInputPageKeysConfig (@SuppressWarnings("unused") String[] outputKeys)  {
 		return EMPTY_INPUT_SET;
 	}; 
-	public Set<String> getInputPageKeysActual (String[] outputKeys, Map<String, PageData> inputPageData); 
+	public Set<String> getInputPageKeysActual (String[] outputKeys, Map<String, PageData> configInputPageData); 
 	public PageData    execute                (String[] outputKeys, Map<String, PageData> inputPageData); 
 }

@@ -55,17 +55,17 @@ public class SQLTableLoader implements RowsourceGenerator {
 			
 			resultSet.getStatement().close();
 		} catch (SQLException e) {
-			throw new RuntimeException("OracleTableLoader::createRowsourceHeader - Initiation of datasource failed.\r\n"+
+			throw new RuntimeException("SQLTableLoader::createRowsourceHeader - Initiation of datasource failed.\r\n"+
 										"SQL: "+dummySql+"\r\n" +
 										"Error: "+ e.getErrorCode() + " " + e.getMessage(), e);
 		}  catch (SQLTypeNotSupportedException e) {
-			throw new RuntimeException("OracleTableLoader::createRowsourceHeader -  Column Type can't be mapped.\r\n"+
+			throw new RuntimeException("SQLTableLoader::createRowsourceHeader -  Column Type can't be mapped.\r\n"+
 					"SQL: "+dummySql+"\r\n" +
 					"Error: "+ e.getMessage(), e);
 		}
 		
 		
-		return new RowsourceHeader( "OracleTableLoader::" +tableName,
+		return new RowsourceHeader( "SQLTableLoader::" +tableName,
 									columnNames,
 									columnTypes);
 	}
@@ -83,7 +83,7 @@ public class SQLTableLoader implements RowsourceGenerator {
 			
 			resultSet.getStatement().close();
 		} catch (SQLException e) {
-			throw new RuntimeException("OracleTableLoader::execute - Data fetch failed.\r\n"+
+			throw new RuntimeException("SQLTableLoader::execute - Data fetch failed.\r\n"+
 										"SQL: "+sql+"\r\n" +
 										"Error: "+ e.getErrorCode() + " " + e.getMessage());
 		}

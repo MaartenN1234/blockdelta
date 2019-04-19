@@ -15,7 +15,7 @@ public class PageMapProvider {
 
 	
 	public static PageAdmin retrieveAdmin(String pageKey) {
-		synchronized (pageKey){
+		synchronized (pageAdminMap){
 			PageAdmin result = pageAdminMap.get(pageKey);
 			if (result == null){
 				result = new PageAdmin(pageKey);
@@ -29,14 +29,18 @@ public class PageMapProvider {
 	
 	
 	public static PageData retrieveData(String pageKey) {
-		synchronized (pageKey){
-			return pageDataMap.get(pageKey);
+		synchronized (pageAdminMap){
+			PageData result = pageDataMap.get(pageKey);
+			if (result == null){
+				throw new RuntimeException("COULD NOT FIND DATA for " + pageKey);
+			}
+			return result;
 		}
 	}
 	
 	
 	public static void store(String pageKey, PageAdmin pageAdmin, PageData pageData) {
-		synchronized (pageKey){
+		synchronized (pageAdminMap){
 			pageAdminMap.put(pageKey, pageAdmin);
 			pageDataMap.put(pageKey, pageData);
 		}
@@ -45,7 +49,7 @@ public class PageMapProvider {
 
 
 	public static void store(String pageKey, PageAdmin pageAdmin) {
-		synchronized (pageKey){
+		synchronized (pageAdminMap){
 			pageAdminMap.put(pageKey, pageAdmin);
 		}
 		
