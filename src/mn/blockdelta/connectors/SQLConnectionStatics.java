@@ -10,14 +10,14 @@ import mn.blockdelta.config.ConfigFile;
 
 public class SQLConnectionStatics {
 	private static SQLConnectionStatics sqlStaticsStorage = new SQLConnectionStatics();
-	private static int TIMEOUT    = ConfigFile.SQL_TIMEOUT;
-	private static int FETCH_SIZE = ConfigFile.SQL_FETCH_SIZE;
+	private static int TIMEOUT    = ConfigFile.getSqlTimeOut();
+	private static int FETCH_SIZE = ConfigFile.getSqlFetchSize();
 
-	private String host    = ConfigFile.SQL_HOST;
-	private String port    = ConfigFile.SQL_PORT;
-	private String service = ConfigFile.SQL_SERVICE;
-	private String user    = ConfigFile.SQL_USER;
-	private String pass    = ConfigFile.SQL_PASS;
+	private String host    = ConfigFile.getSqlHost();
+	private String port    = ConfigFile.getSqlPort();
+	private String service = ConfigFile.getSqlService();
+	private String user    = ConfigFile.getSqlUser();
+	private String pass    = ConfigFile.getSqlPass();
 	
 	private Connection conn = null;
 
